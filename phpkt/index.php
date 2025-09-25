@@ -96,28 +96,31 @@
         <!-- Section-->
         <h1 class="text-center">Teenused</h1>
         <?php
-          // if (($open = fopen("kursused.csv", "r")) !== false) {
-          //   while (($data = fgetcsv($open, 1000, ",")) !== false) {
-          //       $array[] = $data;
-          //   }
-            
-          //   fclose($open);
-          // }
-          // echo "<pre>";
-          // echo $array[1]
-
-          // // To display array data
-          // var_dump($array);
-          // echo "</pre>";
+          $rows = file("kursused.csv");
+          $len = count($rows);
+          $rand = [];
+          while (count($rand) < 1) {
+              $r = rand(1, $len);
+              if (!in_array($r, $rand)) {
+                  $rand[] = $r;
+              }
+          }
+          foreach ($rand as $r) {
+              $csv = $rows[$r];
+              echo $csv;
+              $data = str_getcsv($csv);
+              // now do whatever you want with $data, which is one random row of your CSV
+              echo "first column from row $r: $data[1]";
+          }
         ?>
         <?php
-          function kursused(){
-	          $open = fopen('kursused.csv', 'r');
-            while (($open = implode($open)) !== FALSE){
-              print_r($open);
-            }
-          }
-          kursused();
+          // function kursused(){
+	        //   $open = fopen('kursused.csv', 'r');
+          //   while (($open = fgetcsv($open)) !== FALSE){
+          //     print_r($open);
+          //   }
+          // }
+          // kursused();
         ?>
         <section class="my-5 mx-5 text-center">
           <div class="row align-items-center">
