@@ -107,10 +107,13 @@
           }
           foreach ($rand as $r) {
               $csv = $rows[$r];
-              echo $csv;
               $data = str_getcsv($csv);
-              // now do whatever you want with $data, which is one random row of your CSV
-              echo "first column from row $r: $data[1]";
+              echo $data[0];
+              echo $data[1];
+              echo $data[2];
+              echo $data[3];
+              // // now do whatever you want with $data, which is one random row of your CSV
+              // echo "first column from row $r: $data[1]";
           }
         ?>
         <?php
